@@ -19,9 +19,19 @@
 var score = 0
 var pizza: String
 
-//func gerarPedido() -> String {
-//TODO: COMPLETE O CÓDIGO AQUI
-//}
+func gerarPedido() -> String {
+    var sortedNumber = Int.random(in: 0...2)
+    var recheio = ""
+
+    if(sortedNumber == 0){
+        recheio = "Calabresa"
+    }else if(sortedNumber == 1){
+        recheio = "Portuguesa"
+    }else{
+        recheio = "Frango catupiry"
+    }
+    return recheio
+}
 
 func montarPizza(de pedido: String) -> String {
     let massa = ("    queijoqueijo\nmolhomolhomolhomolho\nmassamassamassamassa\n")
@@ -43,3 +53,7 @@ func darPontos(pizza: String, recheio: String) {
     score += 1
     print(score)
 }
+
+var pedido = gerarPedido()
+pizza = montarPizza(de: pedido)
+print(pizza)
