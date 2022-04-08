@@ -32,17 +32,52 @@
 //: [Next](@next)
 
 
+var monster: Bool = false
+var trap: Bool = false
+
+func walk(direction: String){
+   if(monster == false && trap == false){
+      if(direction == "esquerda" || direction == "direita" || direction == "frente" || direction == "trás"){
+         print("Você andou para \(direction)")
+         print(randomEvent())
+      }else{
+         print("Essa é uma direção inválida!")
+      }
+   }else if(monster == false && trap == true){
+      print("Armadilha a frente desarme-a!")
+   }else {
+      print("Monstro a frente ataque-o!")
+   }
+}
+
+func randomEvent() -> String{
+   var sortedNumber = Int.random(in: 0...2)
+   if(sortedNumber == 0){
+      monster == true
+      return "Há um monstro a sua frente"
+   }else if(sortedNumber == 1){
+      trap == true
+      return "Há uma armadilha a sua frente"
+   }else{
+      return "Caminho está livre pode continuar"
+   }
+
+}
+
+
+
 func attack() {
     print("IÁAAAAAA")
-    //monster = false
+    monster = false
     print("Você matou o monstro!")
 }
 
 func disableTrap() {
     print("Essa eu consigo desarmar!")
-    //trap = false
+    trap = false
     print("Você desarmou a armadilha!")
 }
 
+walk(direction: "frente")
 
 
